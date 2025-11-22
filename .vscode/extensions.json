@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "njpwerner.autodocstring",
+        "aaron-bond.better-comments",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "charliermarsh.ruff",
+        "vscode-icons-team.vscode-icons",
+        "github.copilot",
+        "github.copilot-chat"
+    ]
+}
