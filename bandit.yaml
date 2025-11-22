@@ -1,2 +1,5 @@
-exclude:
-  - tests
+exclude_dirs:
+  - tests        # Ignore tests completely
+
+skips:
+  - B101         # Allow assert in tests
