@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 100
+lint.select = ["E", "F", "I"]
+lint.ignore = ["E501"]
+exclude = ["venv", "scripts"]
+
+[tool.mypy]
+python_version = "3.11"
+disallow_untyped_defs = true
+ignore_missing_imports = true
+pretty = true
