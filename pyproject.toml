@@ -11,5 +11,4 @@ ignore_missing_imports = true
 pretty = true
 
 [tool.bandit]
-exclude = ["tests"]
-skips = ["B101"]
+exclude_dirs = ["tests"]
