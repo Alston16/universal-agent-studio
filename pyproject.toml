@@ -9,3 +9,7 @@ python_version = "3.11"
 disallow_untyped_defs = true
 ignore_missing_imports = true
 pretty = true
+
+[tool.bandit]
+exclude = ["tests"]
+skips = ["B101"]
