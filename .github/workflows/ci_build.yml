@@ -31,7 +31,7 @@ jobs:
       run: mypy .
 
     - name: Run Bandit (security scan)
-      run: bandit -r .
+      run: bandit -r -c bandit.yaml .
 
     - name: Run tests with Pytest
       run: pytest --maxfail=1 --disable-warnings -q
