@@ -3,7 +3,7 @@ from langchain_perplexity import ChatPerplexity
 
 
 def chat_page() -> None:
-    model = ChatPerplexity(temperature=0, model="sonar")
+    model = ChatPerplexity(temperature=0, model="sonar", timeout=60)
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
