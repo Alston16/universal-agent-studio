@@ -1,8 +1,20 @@
+[project]
+name = "universal-agent-studio"
+version = "0.1.0"
+description = "A unified platform to create, run, and host AI agents. Includes an agent chat UI, LLM marketplace (local + API models), MCP server integrations, no-code agent builder, and OpenAI/A2A-compatible hosting. Build powerful, extensible agents without coding."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-perplexity>=1.1.0",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.51.0",
+]
+
 [tool.ruff]
 line-length = 100
 lint.select = ["E", "F", "I"]
 lint.ignore = ["E501"]
-exclude = ["venv", "scripts"]
+exclude = [".venv", "scripts"]
 
 [tool.mypy]
 python_version = "3.11"

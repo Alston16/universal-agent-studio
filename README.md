@@ -4,6 +4,41 @@
 
 ---
 
+## **Setup and Run Instructions**
+
+### **Setup**
+
+1. Install `uv`:
+
+   - **For Mac and Linux**:
+     ```bash
+     curl -LsSf https://astral.sh/uv/install.sh | sh
+     ```
+
+   - **For Windows (in PowerShell)**:
+     ```powershell
+     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+     ```
+
+2. Clone the repository and navigate to the project directory:
+   ```bash
+   cd universal-agent-studio
+   ```
+
+3. Sync the project dependencies:
+   ```bash
+   uv sync
+   ```
+
+### **Run**
+
+Start the application:
+```bash
+uv run -m streamlit run src/main.py
+```
+
+---
+
 ## **1. Vision**
 
 Universal Agent Studio aims to make **agent creation and LLM usage accessible to everyone — developers, teams, enterprises, and hobbyists**. It provides a unified interface for:
