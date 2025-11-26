@@ -25,16 +25,15 @@ jobs:
     - name: Install dependencies
       run: |
         uv sync
-        uv tool install pytest ruff mypy bandit
 
     - name: Run Ruff (lint + format check)
-      run: ruff check .
+      run: uvx ruff check .
 
     - name: Run mypy (type checking)
-      run: mypy .
+      run: uvx mypy .
 
     - name: Run Bandit (security scan)
-      run: bandit -r -c bandit.yaml .
+      run: uvx bandit -r -c bandit.yaml .
 
     - name: Run tests with Pytest
-      run: pytest --maxfail=1 --disable-warnings -q
+      run: uvx pytest --maxfail=1 --disable-warnings -q
