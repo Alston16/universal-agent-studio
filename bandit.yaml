@@ -1,5 +1,6 @@
 exclude_dirs:
   - tests        # Ignore tests completely
+  - .venv
 
 skips:
   - B101         # Allow assert in tests

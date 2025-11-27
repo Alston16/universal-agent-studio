@@ -17,21 +17,23 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.11"
+        python-version: "3.13"
+    
+    - name: Setup UV
+      uses: astral-sh/setup-uv@v7
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-        pip install pytest ruff mypy bandit
+        uv sync
 
     - name: Run Ruff (lint + format check)
-      run: ruff check .
+      run: uvx ruff check .
 
     - name: Run mypy (type checking)
-      run: mypy .
+      run: uvx mypy .
 
     - name: Run Bandit (security scan)
-      run: bandit -r -c bandit.yaml .
+      run: uvx bandit -r -c bandit.yaml .
 
     - name: Run tests with Pytest
-      run: pytest --maxfail=1 --disable-warnings -q
+      run: uvx pytest --maxfail=1 --disable-warnings -q
