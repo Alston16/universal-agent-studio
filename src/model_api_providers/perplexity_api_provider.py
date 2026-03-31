@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-from langchain_perplexity import ChatPerplexity
 from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_perplexity import ChatPerplexity
 
 from model_api_providers.model_api_provider import ModelApiProvider
 
