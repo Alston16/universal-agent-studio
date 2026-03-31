@@ -23,8 +23,7 @@ jobs:
       uses: astral-sh/setup-uv@v7
 
     - name: Install dependencies
-      run: |
-        uv sync
+      run: uv sync
 
     - name: Run Ruff (lint + format check)
       run: uvx ruff check .
@@ -36,4 +35,4 @@ jobs:
       run: uvx bandit -r -c bandit.yaml .
 
     - name: Run tests with Pytest
-      run: uvx pytest --maxfail=1 --disable-warnings -q
+      run: uv run pytest --maxfail=1 --disable-warnings -q
