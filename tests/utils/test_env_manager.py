@@ -3,7 +3,7 @@ import os
 from utils.env_manager import add_env_variable, get_env_variable, remove_env_variable
 
 
-def test_add_env_variable():
+def test_add_env_variable() -> None:
     key = "TEST_ENV_VAR"
     value = "test_value"
 
@@ -12,7 +12,7 @@ def test_add_env_variable():
     # Clean up
     remove_env_variable(key)
 
-def test_get_env_variable():
+def test_get_env_variable() -> None:
     key = "TEST_ENV_VAR"
     value = "test_value"
 
@@ -25,7 +25,7 @@ def test_get_env_variable():
     # Clean up
     del os.environ[key]
 
-def test_remove_env_variable():
+def test_remove_env_variable() -> None:
     key = "TEST_ENV_VAR"
     value = "test_value"
 
