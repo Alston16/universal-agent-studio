@@ -69,16 +69,16 @@ def model_marketplace() -> None:
         models_local = api.list_models(filter="llama.cpp", sort="downloads", direction=-1, limit=10)
         for model_local in models_local:
             if "/" in model_local.id:
-                model_provider, model_name = model_local.id.split("/", 1)
+                hf_model_provider, model_name = model_local.id.split("/", 1)
             else:
-                model_provider, model_name = "unknown", model_local.id
+                hf_model_provider, model_name = "unknown", model_local.id
 
             is_available = is_local_model_available(model_local.id)
 
             info_col, action_col = st.columns([4, 1])
             with info_col:
                 availability_status = "Installed" if is_available else "Not Installed"
-                st.write(f"- {model_name} by {model_provider} ({availability_status})")
+                st.write(f"- {model_name} by {hf_model_provider} ({availability_status})")
 
             with action_col:
                 if is_available:
