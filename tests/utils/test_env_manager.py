@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
+
+import pytest
 
 import utils.env_manager as env_manager
 from utils.env_manager import add_env_variable, get_env_variable, remove_env_variable
 
 
-def test_add_env_variable(tmp_path, monkeypatch):
+def test_add_env_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # Use a temporary .env file for this test
     tmp_env_file = tmp_path / ".env"
     tmp_env_file.touch()
@@ -20,7 +23,7 @@ def test_add_env_variable(tmp_path, monkeypatch):
     assert os.environ.get(key) == value
 
 
-def test_get_env_variable(tmp_path, monkeypatch):
+def test_get_env_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # Use a temporary .env file for this test
     tmp_env_file = tmp_path / ".env"
     tmp_env_file.touch()
@@ -39,7 +42,7 @@ def test_get_env_variable(tmp_path, monkeypatch):
     assert get_env_variable("NON_EXISTING_VAR") is None
 
 
-def test_remove_env_variable(tmp_path, monkeypatch):
+def test_remove_env_variable(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # Use a temporary .env file for this test
     tmp_env_file = tmp_path / ".env"
     tmp_env_file.touch()

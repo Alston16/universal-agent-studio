@@ -1,5 +1,3 @@
-from typing import Literal
-
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_perplexity import ChatPerplexity
 
@@ -20,5 +18,5 @@ class PerplexityApiProvider(ModelApiProvider):
     def get_model_names(self) -> list[str]:
         return list(PERPLEXITY_MODELS)
     
-    def get_chat_model(self, model_name: Literal["sonar", "sonar-pro", "sonar-deep-research", "sonar-reasoning", "sonar-reasoning-pro"]) -> BaseChatModel:
+    def get_chat_model(self, model_name: str) -> BaseChatModel:
         return ChatPerplexity(model_name=model_name)
