@@ -15,7 +15,6 @@ def add_env_variable(key: str, value: str) -> None:
         key (str): The name of the environment variable.
         value (str): The value of the environment variable.
     """
-    print(f"ENV_PATH: {ENV_PATH}")
     os.environ[key] = value
 
     if not ENV_PATH.exists():

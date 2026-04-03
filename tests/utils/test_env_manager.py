@@ -1,7 +1,7 @@
 import os
 
-from utils.env_manager import add_env_variable, get_env_variable, remove_env_variable
 import utils.env_manager as env_manager
+from utils.env_manager import add_env_variable, get_env_variable, remove_env_variable
 
 
 def test_add_env_variable(tmp_path, monkeypatch):

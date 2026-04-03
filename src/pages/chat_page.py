@@ -2,6 +2,7 @@ import json
 
 import streamlit as st
 from langchain_community.chat_models import ChatLlamaCpp
+from langchain_core.language_models.chat_models import BaseChatModel
 
 from model_api_providers.model_api_providers_list import MODEL_API_PROVIDERS
 from utils.local_models_utils import get_local_model_storage_path, load_local_models_list
@@ -51,7 +52,7 @@ def _build_model_options() -> list[dict]:
     return options
 
 
-def _load_chat_model(option: dict):
+def _load_chat_model(option: dict) -> BaseChatModel:
     """Instantiate the appropriate LangChain chat model for the selected option."""
     if option["type"] == "api":
         return option["provider"].get_chat_model(option["model_name"])
