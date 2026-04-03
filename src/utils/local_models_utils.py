@@ -2,7 +2,7 @@ import json
 import shutil
 from pathlib import Path
 
-from huggingface_hub import snapshot_download
+from huggingface_hub import HfApi, snapshot_download
 
 LOCAL_MODELS_LIST_FILE_PATH = (
     Path(__file__).parent.parent.parent / "data" / "local" / "local_models.json"
@@ -64,13 +64,29 @@ def remove_local_model(model_name: str) -> None:
         save_local_models_list(local_models)
 
 
-def download_local_model_artifacts(model_name: str) -> Path:
+def _resolve_repo_revision(repo_id: str) -> str:
+    """Resolve the repository HEAD commit SHA so downloads are pinned to an immutable revision."""
+    model_info = HfApi().model_info(repo_id=repo_id)
+    if not model_info.sha:
+        msg = f"Unable to resolve pinned revision for '{repo_id}'."
+        raise ValueError(msg)
+
+    return model_info.sha
+
+
+def download_local_model_artifacts(model_name: str, revision: str | None = None) -> Path:
     """Download model artifacts from Hugging Face and register the model as installed."""
     _ensure_local_models_storage_dir_exists()
     local_model_path = get_local_model_storage_path(model_name)
     local_model_path.mkdir(parents=True, exist_ok=True)
 
-    snapshot_download(repo_id=model_name, local_dir=str(local_model_path))
+    pinned_revision = revision or _resolve_repo_revision(model_name)
+
+    snapshot_download(
+        repo_id=model_name,
+        revision=pinned_revision,
+        local_dir=str(local_model_path),
+    )
     add_local_model(model_name)
     return local_model_path
 

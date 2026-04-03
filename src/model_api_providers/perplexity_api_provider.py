@@ -19,4 +19,4 @@ class PerplexityApiProvider(ModelApiProvider):
         return list(PERPLEXITY_MODELS)
     
     def get_chat_model(self, model_name: str) -> BaseChatModel:
-        return ChatPerplexity(model_name=model_name)
+        return ChatPerplexity(model=model_name)

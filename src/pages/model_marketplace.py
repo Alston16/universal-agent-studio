@@ -14,10 +14,10 @@ from utils.local_models_utils import (
 MODELS_LIST_PATH = Path(__file__).parent.parent.parent / "data" / "global" / "models.json"
 
 
-def download_local_model(model_id: str) -> None:
+def download_local_model(model_id: str, revision: str | None = None) -> None:
     with st.spinner(f"Downloading {model_id}..."):
         try:
-            local_path = download_local_model_artifacts(model_id)
+            local_path = download_local_model_artifacts(model_id, revision=revision)
         except Exception as error:
             st.error(f"Failed to download {model_id}: {error}")
             return
@@ -87,7 +87,7 @@ def model_marketplace() -> None:
                         st.rerun()
                 else:
                     if st.button("Download", key=f"download-{model_local.id}"):
-                        download_local_model(model_local.id)
+                        download_local_model(model_local.id, revision=model_local.sha)
                         st.rerun()
     st.write("Explore and select different language models for your applications.")
 
